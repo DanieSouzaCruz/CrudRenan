@@ -6,7 +6,7 @@
     $estoque = $_POST['estoque'];
     $preco   = $_POST['preco'];
 
-    $resultado = mysqli_query($conexao, "INSERT INTO produtos (id, descricao, marca, preco) 
+    $resultado = mysqli_query($conexao, "INSERT INTO produtos (id, descricao, marca, estoque, preco) 
     VALUES (NULL, '$descricao', '$marca', '$estoque', '$preco')");
 
     mysqli_close($conexao);
