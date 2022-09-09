@@ -3,7 +3,7 @@
 
     $id = $_GET['id'];
     $retorno = mysqli_query($conexao, "SELECT * FROM produtos WHERE id = $id");
-    $usuario = mysqli_fetch_assoc($retorno);
+    $produtos = mysqli_fetch_assoc($retorno);
 ?>
 <!doctype html>
 <html lang="en">
@@ -24,19 +24,19 @@
             <input type="hidden" name="id" value="<?=$produtos['id']?>">
             <div class="mb-3">
                 <label for="descricao" class="form-label">Descricao</label>
-                <input type="text" class="form-control" id="descricao" name="descricao" value="<?=$descricao['descricao']?>">
+                <input type="text" class="form-control" id="descricao" name="descricao" value="<?=$produtos['descricao']?>">
             </div>
             <div class="mb-3">
                 <label for="marca" class="form-label">Marca</label>
-                <input type="text" class="form-control" id="marca" name="marca" value="<?=$marca['marca']?>">
+                <input type="text" class="form-control" id="marca" name="marca" value="<?=$produtos['marca']?>">
             </div>
             <div class="mb-3">
                 <label for="usuario" class="form-label">Estoque</label>
-                <input type="text" class="form-control" id="estoque" name="estoque" value="<?=$estoque['estoque']?>">
+                <input type="text" class="form-control" id="estoque" name="estoque" value="<?=$produtos['estoque']?>">
             </div>
             <div class="mb-3">
                 <label for="preco" class="form-label">Preco</label>
-                <input type="text" class="form-control" id="preco" name="preco" value="<?=$preco['preco']?>">
+                <input type="text" class="form-control" id="preco" name="preco" value="<?=$produtos['preco']?>">
             </div>
             <div class="mb-3">
                 <input type="submit" class="form-control btn btn-primary" value="Salvar">
