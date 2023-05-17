@@ -1,9 +1,15 @@
 <?php 
-    require('conexao.php');
-    $id = $_GET['id'];
+require('conexao.php');
+$id = (int)$_GET['id'];
 
-    mysqli_query($conexao, "DELETE FROM produtos WHERE id = $id");
+if ($id > 0) {
+    $stmt = $conexao->prepare("DELETE FROM produtos WHERE id = ?");
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $stmt->close();
+}
 
-    mysqli_close($conexao);
+$conexao->close();
 ?>
+
 <a href="select.php">Lista</a>
