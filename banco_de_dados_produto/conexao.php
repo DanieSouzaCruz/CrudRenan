@@ -1,9 +1,12 @@
 <?php
-    $endereco = 'localhost';
-    $usuario  = 'root';
-    $senha    = '';
-    $base     = 'unicv_web';
+$endereco = 'localhost';
+$usuario = 'root';
+$senha = '';
+$base = 'unicv_web';
 
-    $conexao = mysqli_connect($endereco, $usuario, $senha, $base);
+$conexao = new mysqli($endereco, $usuario, $senha, $base);
 
+if ($conexao->connect_errno) {
+    die("Falha ao conectar ao banco de dados: " . $conexao->connect_error);
+}
 ?>
