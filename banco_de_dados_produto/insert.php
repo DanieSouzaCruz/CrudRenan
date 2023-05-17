@@ -1,15 +1,17 @@
 <?php
-    require('conexao.php');
+require('conexao.php');
 
-    $descricao    = $_POST['descricao'];
-    $marca   = $_POST['marca'];
-    $estoque = $_POST['estoque'];
-    $preco   = $_POST['preco'];
+$descricao = $_POST['descricao'] ?? '';
+$marca = $_POST['marca'] ?? '';
+$estoque = $_POST['estoque'] ?? '';
+$preco = $_POST['preco'] ?? '';
 
-    $resultado = mysqli_query($conexao, "INSERT INTO produtos (id, descricao, marca, estoque, preco) 
-    VALUES (NULL, '$descricao', '$marca', '$estoque', '$preco')");
+$query = "INSERT INTO produtos (descricao, marca, estoque, preco) 
+          VALUES ('$descricao', '$marca', '$estoque', '$preco')";
 
-    mysqli_close($conexao);
+$resultado = mysqli_query($conexao, $query);
+
+mysqli_close($conexao);
 ?>
 <!doctype html>
 <html lang="en">
@@ -21,7 +23,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>    
   </head>
   <body>
-    <?php if ($resultado == true): ?>
+    <?php if ($resultado): ?>
         <div class="alert alert-success" role="alert">Produto cadastrado.</div>
         <a href="select.php" class="btn btn-success">Listagem</a>
     <?php endif; ?>
